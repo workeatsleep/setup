@@ -1,0 +1,13 @@
+[user]
+	name = Xiaodan
+	email = xsun@netflix.com
+[color]
+    diff = auto
+    branch = auto
+    status = auto
+    ui = auto
+[alias]
+    logk = log --graph --pretty=oneline --abbrev-commit --decorate
+    b = branch
+    r = remote
+    s = status
