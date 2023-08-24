@@ -1,0 +1,17 @@
+[user]
+	name = Xiaodan
+	email = xsun@netflix.com
+[color]
+    diff = auto
+    branch = auto
+    status = auto
+    ui = auto
+[alias]
+    logk = log --graph --pretty=oneline --abbrev-commit --decorate
+    tagcommit = tagcommit = rev-list -n
+    b = branch
+    r = remote
+    s = status
+    cm = checkout master
+[core]
+	editor = vim~
