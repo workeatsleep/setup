@@ -8,26 +8,23 @@ git_branch() {
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$(git_branch)$"
 alias ls='ls -GFh'
 
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
-#export PATH="/usr/local/opt/openjdk/bin:$PATH"
+source /opt/homebrew/Cellar/fzf/0.42.0/shell/key-bindings.bash
+source /opt/homebrew/Cellar/fzf/0.42.0/shell/completion.bash
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/xsun/.sdkman"
-[[ -s "/Users/xsun/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/xsun/.sdkman/bin/sdkman-init.sh"
-
-export JAVA_HOME="/Users/xsun/.sdkman/candidates/java/11.0.12-zulu/zulu-11.jdk/Contents/Home"
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-#export FZF_DEFAULT_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
-
+#do this first curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
-fi
-export PATH="/usr/local/opt/libpq/bin:$PATH"
+  fi
+alias python=python3 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(NEWT_OFFLINE=1 NEWT_QUIET=1 newt --app-type cinder-cli init -)"
